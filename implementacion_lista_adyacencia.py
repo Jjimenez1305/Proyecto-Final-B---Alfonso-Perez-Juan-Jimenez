@@ -4,8 +4,9 @@ def registrar_usuario(nodos: list, usuario: str):
     nodos.append(usuario)
     return nodos
 
-def conectar_usuarios():
-    pass
+def conectar_usuarios(u1: str, u2: str, grafo):
+    grafo[u1].add(u2)
+    return grafo
 
 def eliminar_usuarios():
     pass
@@ -32,10 +33,15 @@ def main():
     while instruccion != []:
         if instruccion[0] == "Registrar":
             usuario = instruccion[1]
-            nodos = registrar_usuario(nodos, usuario)
-            grafo[usuario] = {}
+            if usuario not in nodos:
+                    nodos = registrar_usuario(nodos, usuario)
+                    grafo[usuario] = set()
         elif instruccion[0] == "Conectar":
-            conectar_usuarios()
+            usuario_1 = str(stdin.readline().strip())
+            usuario_2 = str(stdin.readline().strip())
+            if usuario_1 in nodos and usuario_2 in nodos:
+                if usuario_2 not in grafo[usuario_1]
+                    grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
         elif instruccion[0] == "Eliminar":
             eliminar_usuarios()
         elif instruccion[0] == "Sugerir":
@@ -48,7 +54,5 @@ def main():
             print("Instrucción invalida")
 
         instruccion = [str(i) for i in stdin.readline().strip().split()]
-
-    print(nodos)
-
+    print(grafo)
 main()
