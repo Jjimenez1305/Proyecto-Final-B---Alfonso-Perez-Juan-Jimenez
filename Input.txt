@@ -1,4 +1,10 @@
-Registrar usuario
+Registrar Alfonso
+Registrar Juan
+Conectar
 Alfonso
-Registrar usuario
+Juan
+Conectar
+Juan
+Alfonso
+Eliminar
 Juan

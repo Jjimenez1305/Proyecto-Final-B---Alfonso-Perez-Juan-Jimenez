@@ -8,8 +8,9 @@ def conectar_usuarios(u1: str, u2: str, grafo):
     grafo[u1].add(u2)
     return grafo
 
-def eliminar_usuarios():
-    pass
+def eliminar_usuarios(u:str,grafo):
+    grafo.pop(u)
+    return grafo
 
 def sugerir_personas():
     pass
@@ -43,7 +44,8 @@ def main():
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
         elif instruccion[0] == "Eliminar":
-            eliminar_usuarios()
+            usuario = str(stdin.readline().strip())
+            grafo = eliminar_usuarios(usuario,grafo)
         elif instruccion[0] == "Sugerir":
             sugerir_personas()
         elif instruccion[0] == "Grupos":
