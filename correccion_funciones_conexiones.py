@@ -12,8 +12,14 @@ def eliminar_usuarios(u:str,grafo):
     grafo.pop(u)
     return grafo
 
-def sugerir_personas():
-    pass
+def sugerir_personas(u_sg:str,grafo):
+    recomendados = []
+    for i in grafo:
+        for j in grafo[i]:
+            if j == u_sg:
+                recomendados.append(i)
+    return recomendados
+            
 
 def grupos_independientes():
     pass
@@ -47,7 +53,9 @@ def main():
             usuario = str(stdin.readline().strip())
             grafo = eliminar_usuarios(usuario,grafo)
         elif instruccion[0] == "Sugerir":
-            sugerir_personas()
+            usuario_sg = str(stdin.readline().strip())
+            sugeridos = sugerir_personas(usuario_sg,grafo)
+            print(sugeridos)
         elif instruccion[0] == "Grupos":
             grupos_independientes()
         elif instruccion[0] == "Contar":

@@ -1,10 +1,18 @@
 Registrar Alfonso
 Registrar Juan
+Registrar Camilo
+Registrar David
 Conectar
 Alfonso
 Juan
 Conectar
+Camilo 
 Juan
-Alfonso
-Eliminar
+Conectar
+David
+Juan
+Conectar
+Juan
+Camilo
+Sugerir
 Juan
