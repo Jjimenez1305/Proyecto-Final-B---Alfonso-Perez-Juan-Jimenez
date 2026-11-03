@@ -8,11 +8,11 @@ def conectar_usuarios(u1: str, u2: str, grafo):
     grafo[u1].add(u2)
     return grafo
 
-def eliminar_usuarios(u: str, grafo):
+def eliminar_usuarios(u: str, grafo: dict):
     grafo.pop(u)
     return grafo
 
-def sugerir_personas(u_sg:str,grafo):
+def sugerir_personas(u_sg:str, grafo: dict):
     recomendados = []
     for i in grafo:
         for j in grafo[i]:
@@ -23,7 +23,7 @@ def sugerir_personas(u_sg:str,grafo):
 def grupos_independientes():
     pass
 
-def contar_amistades():
+def contar_seguidores():
     pass
 
 
@@ -49,7 +49,7 @@ def main():
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
         elif instruccion[0] == "Eliminar":
-            usuario str(stdin.readline().strip())
+            usuario = str(stdin.readline().strip())
             grafo = eliminar_usuarios(usuario, grafo)
         elif instruccion[0] == "Sugerir":
             usuario_sg = str(stdin.readline().strip())
@@ -58,7 +58,7 @@ def main():
         elif instruccion[0] == "Grupos":
             grupos_independientes()
         elif instruccion[0] == "Contar":
-            contar_amistades()
+            contar_seguidores()
         else:
             print("Instrucción invalida")
 

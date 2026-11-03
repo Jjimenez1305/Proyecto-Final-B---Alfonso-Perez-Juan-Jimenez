@@ -1,4 +1,18 @@
-Registrar usuario
+Registrar Alfonso
+Registrar Juan
+Registrar Camilo
+Registrar David
+Conectar
 Alfonso
-Registrar usuario
+Juan
+Conectar
+Camilo 
+Juan
+Conectar
+David
+Juan
+Conectar
+Juan
+Camilo
+Sugerir
 Juan
