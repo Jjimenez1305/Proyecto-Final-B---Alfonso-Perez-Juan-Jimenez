@@ -23,8 +23,14 @@ def sugerir_personas(u_sg:str, grafo: dict):
 def grupos_independientes():
     pass
 
-def contar_seguidores():
-    pass
+def contar_seguidores(uc: str, grafo: dict):
+    seguidores = 0
+    for i in grafo[uc]:
+        seguidores += 1
+
+    return f"Usuario: {uc} tiene {seguidores} seguidores"
+            
+                
 
 
 
@@ -58,7 +64,8 @@ def main():
         elif instruccion[0] == "Grupos":
             grupos_independientes()
         elif instruccion[0] == "Contar":
-            contar_seguidores()
+            usuario_cont = str(stdin.readline().strip())
+            print(contar_seguidores(usuario_cont, grafo))
         else:
             print("Instrucción invalida")
 

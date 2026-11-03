@@ -4,6 +4,9 @@ Registrar Camilo
 Registrar David
 Conectar
 Alfonso
+David
+Conectar
+Alfonso
 Juan
 Conectar
 Camilo 
@@ -16,3 +19,9 @@ Juan
 Camilo
 Sugerir
 Juan
+Contar
+Alfonso
+Contar
+Juan
+Contar
+David
