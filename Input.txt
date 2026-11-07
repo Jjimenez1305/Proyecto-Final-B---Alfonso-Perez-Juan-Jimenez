@@ -1,27 +1,13 @@
-Registrar Alfonso
-Registrar Juan
-Registrar Camilo
-Registrar David
-Conectar
-Alfonso
-David
-Conectar
-Alfonso
-Juan
-Conectar
-Camilo 
-Juan
-Conectar
-David
-Juan
-Conectar
-Juan
-Camilo
-Sugerir
-Juan
-Contar
-Alfonso
-Contar
-Juan
-Contar
-David
+Registrar poncho__per
+Registrar Juan_l_2006
+Registrar cam_2201
+Registrar x_David_07
+Conectar poncho__per x_David_07
+Conectar x_David_07 poncho__per 
+Conectar Juan_l_2006 poncho__per 
+Conectar x_David_07 cam_2201
+Conectar poncho__per Juan_l_2006
+Sugerir poncho__per
+Contar x_David_07
+Contar Juan_l_2006
+Contar poncho__per

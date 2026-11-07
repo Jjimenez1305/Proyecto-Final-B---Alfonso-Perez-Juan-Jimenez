@@ -28,7 +28,7 @@ def contar_seguidores(uc: str, grafo: dict):
     for i in grafo[uc]:
         seguidores += 1
 
-    return f"Usuario: {uc} tiene {seguidores} seguidores"
+    return f"{uc} tiene {seguidores} seguidores"
             
                 
 
@@ -49,8 +49,8 @@ def main():
                     nodos = registrar_usuario(nodos, usuario)
                     grafo[usuario] = set()
         elif instruccion[0] == "Conectar":
-            usuario_1 = str(stdin.readline().strip())
-            usuario_2 = str(stdin.readline().strip())
+            usuario_1 = instruccion[1]
+            usuario_2 = instruccion[2]
             if usuario_1 in nodos and usuario_2 in nodos:
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
@@ -58,13 +58,13 @@ def main():
             usuario = str(stdin.readline().strip())
             grafo = eliminar_usuarios(usuario, grafo)
         elif instruccion[0] == "Sugerir":
-            usuario_sg = str(stdin.readline().strip())
+            usuario_sg = instruccion[1]
             sugeridos = sugerir_personas(usuario_sg, grafo)
-            print(sugeridos)
+            print(f"Sugerencias para {usuario_sg} : {sugeridos}")
         elif instruccion[0] == "Grupos":
             grupos_independientes()
         elif instruccion[0] == "Contar":
-            usuario_cont = str(stdin.readline().strip())
+            usuario_cont = instruccion[1]
             print(contar_seguidores(usuario_cont, grafo))
         else:
             print("Instrucción invalida")
