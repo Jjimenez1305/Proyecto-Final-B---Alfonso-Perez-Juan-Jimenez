@@ -7,6 +7,8 @@ Conectar x_David_07 poncho__per
 Conectar Juan_l_2006 poncho__per 
 Conectar x_David_07 cam_2201
 Conectar poncho__per Juan_l_2006
+Remover x_David_07
+Eliminar Juan_l_2006
 Sugerir poncho__per
 Contar x_David_07
 Contar Juan_l_2006
