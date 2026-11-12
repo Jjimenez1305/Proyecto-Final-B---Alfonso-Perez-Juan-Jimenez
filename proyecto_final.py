@@ -8,7 +8,13 @@ def conectar_usuarios(u1: str, u2: str, grafo):
     grafo[u1].add(u2)
     return grafo
 
+def remover_usuario(u_rem:str,grafo:dict):
+    for usuario in grafo:
+        grafo[usuario].discard(u_rem)
+    return grafo
+
 def eliminar_usuarios(u: str, grafo: dict):
+    remover_usuario(u,grafo)
     grafo.pop(u)
     return grafo
 
@@ -20,22 +26,39 @@ def sugerir_personas(u_sg:str, grafo: dict):
                 recomendados.append(i)
     return recomendados
 
-def grupos_independientes():
-    pass
+def grupos_independientes(grafo: dict):
+    visitados = set()
+    islas = 0
+
+    vecinos = {u: set() for u in grafo}
+
+    for u in grafo:
+        for v in grafo[u]:
+            vecinos[u].add(v)
+            vecinos[v].add(u)
+
+    def dfs(u):
+        visitados.add(u)
+
+        for vecino in vecinos[u]:
+            if vecino not in visitados:
+                dfs(vecino)
+
+    for vertice in grafo:
+        if vertice not in visitados:
+            islas += 1
+            dfs(vertice)
+            
+    return islas
 
 def contar_seguidores(uc: str, grafo: dict):
     seguidores = 0
-    for i in grafo[uc]:
-        seguidores += 1
+    for usuario in grafo[uc]:
+        if uc in grafo[usuario]:
+            seguidores += 1
 
     return f"{uc} tiene {seguidores} seguidores"
             
-                
-
-
-
-
-
 
 
 def main():
@@ -54,15 +77,23 @@ def main():
             if usuario_1 in nodos and usuario_2 in nodos:
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
+        elif instruccion[0] == 'Remover':
+            usuario_remover = instruccion[1]
+            grafo = remover_usuario(usuario_remover,grafo)
+            print(f'R{grafo}')
         elif instruccion[0] == "Eliminar":
-            usuario = str(stdin.readline().strip())
-            grafo = eliminar_usuarios(usuario, grafo)
+            usuario_sg = instruccion[1]
+
+            if usuario_sg in grafo:
+                grafo = eliminar_usuarios(usuario_sg, grafo)
+                nodos.remove(usuario_sg)
         elif instruccion[0] == "Sugerir":
             usuario_sg = instruccion[1]
             sugeridos = sugerir_personas(usuario_sg, grafo)
-            print(f"Sugerencias para {usuario_sg} : {sugeridos}")
+            for usuario_sug in sugeridos:
+                print(f"Sugerencias para {usuario_sg} : {usuario_sug}")
         elif instruccion[0] == "Grupos":
-            grupos_independientes()
+            print(grupos_independientes(grafo))
         elif instruccion[0] == "Contar":
             usuario_cont = instruccion[1]
             print(contar_seguidores(usuario_cont, grafo))

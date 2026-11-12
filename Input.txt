@@ -1,13 +1,27 @@
-Registrar poncho__per
-Registrar Juan_l_2006
-Registrar cam_2201
-Registrar x_David_07
-Conectar poncho__per x_David_07
-Conectar x_David_07 poncho__per 
-Conectar Juan_l_2006 poncho__per 
-Conectar x_David_07 cam_2201
-Conectar poncho__per Juan_l_2006
-Sugerir poncho__per
-Contar x_David_07
-Contar Juan_l_2006
-Contar poncho__per
+Registrar neon.vibes
+Registrar astro.wav
+Registrar pixelghost_7
+Registrar midnight.exe
+Registrar lunar.archive
+Registrar glitchmode_99
+Registrar coffeeandchaos
+Registrar void.jpeg
+Registrar starlost_404
+Registrar retroflux
+Registrar cloud.exe
+Registrar nocturnal.jpg
+Conectar neon.vibes astro.wav
+Conectar astro.wav pixelghost_7
+Conectar pixelghost_7 neon.vibes
+Conectar midnight.exe lunar.archive
+Conectar lunar.archive glitchmode_99
+Conectar coffeeandchaos void.jpeg
+Conectar void.jpeg starlost_404
+Conectar retroflux coffeeandchaos
+Grupos
+Contar astro.wav
+Sugerir astro.wav
+Eliminar lunar.archive
+Grupos
+Conectar cloud.exe nocturnal.jpg
+Grupos
