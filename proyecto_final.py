@@ -83,10 +83,15 @@ def main():
             print(f'R{grafo}')
         elif instruccion[0] == "Eliminar":
             usuario_sg = instruccion[1]
+<<<<<<< HEAD
 
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
                 nodos.remove(usuario_sg)
+=======
+            grafo = eliminar_usuarios(usuario, grafo)
+            print(f'E{grafo}')
+>>>>>>> d041902f2f06de7a4fbe91a2c544eeb2cbef6c5e
         elif instruccion[0] == "Sugerir":
             usuario_sg = instruccion[1]
             sugeridos = sugerir_personas(usuario_sg, grafo)
