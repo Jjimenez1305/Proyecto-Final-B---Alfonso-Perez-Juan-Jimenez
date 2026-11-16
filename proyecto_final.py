@@ -1,14 +1,14 @@
 from sys import stdin
 
-def registrar_usuario(nodos: list, usuario: str):
-    nodos.append(usuario)
-    return nodos
+def registrar_usuario(grafo: dict, usuario: str):
+    grafo[usuario] = set()
+    return grafo
 
 def conectar_usuarios(u1: str, u2: str, grafo):
     grafo[u1].add(u2)
     return grafo
 
-def desconectar_usuario(u_rem:str,grafo:dict):
+def desconectar_usuario(u_rem:str, grafo:dict):
     for usuario in grafo:
         grafo[usuario].discard(u_rem)
     return grafo
@@ -63,30 +63,30 @@ def contar_seguidores(uc: str, grafo: dict):
 
 def main():
     instruccion = [str(i) for i in stdin.readline().strip().split()]
-    nodos = []
     grafo = {}
+    
     while instruccion != []:
         if instruccion[0] == "Registrar":
             usuario = instruccion[1]
-            if usuario not in nodos:
-                    nodos = registrar_usuario(nodos, usuario)
-                    grafo[usuario] = set()
+            if usuario not in grafo:
+                    grafo = registrar_usuario(grafo, usuario)
+                    
         elif instruccion[0] == "Conectar":
             usuario_1 = instruccion[1]
             usuario_2 = instruccion[2]
-            if usuario_1 in nodos and usuario_2 in nodos:
+            if usuario_1 in grafo and usuario_2 in grafo:
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
+                    
         elif instruccion[0] == 'Desconectar':
             usuario_desconectar = instruccion[1]
             grafo = desconectar_usuario(usuario_desconectar,grafo)
             print(f'R{grafo}')
+            
         elif instruccion[0] == "Eliminar":
             usuario_sg = instruccion[1]
-
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
-                nodos.remove(usuario_sg)
             print(f'E{grafo}')
 
         elif instruccion[0] == "Sugerir":
@@ -94,14 +94,17 @@ def main():
             sugeridos = sugerir_personas(usuario_sg, grafo)
             for usuario_sug in sugeridos:
                 print(f"Sugerencias para {usuario_sg} : {usuario_sug}")
+                
         elif instruccion[0] == "Grupos":
             print(grupos_independientes(grafo))
+            
         elif instruccion[0] == "Contar":
             usuario_cont = instruccion[1]
             print(contar_seguidores(usuario_cont, grafo))
+            
         else:
             print("Instrucción invalida")
 
         instruccion = [str(i) for i in stdin.readline().strip().split()]
-    print(grafo)
+
 main()
