@@ -14,7 +14,7 @@ def desconectar_usuario(u_rem:str,grafo:dict):
     return grafo
 
 def eliminar_usuarios(u: str, grafo: dict):
-    remover_usuario(u,grafo)
+    desconectar_usuario(u,grafo)
     grafo.pop(u)
     return grafo
 
@@ -87,8 +87,6 @@ def main():
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
                 nodos.remove(usuario_sg)
-
-            grafo = eliminar_usuarios(usuario, grafo)
             print(f'E{grafo}')
 
         elif instruccion[0] == "Sugerir":
