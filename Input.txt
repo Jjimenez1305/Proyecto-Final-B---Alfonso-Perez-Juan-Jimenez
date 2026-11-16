@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Registrar neon.vibes
 Registrar astro.wav
 Registrar pixelghost_7
@@ -9,37 +8,25 @@ Registrar coffeeandchaos
 Registrar void.jpeg
 Registrar starlost_404
 Registrar retroflux
-Registrar cloud.exe
-Registrar nocturnal.jpg
 Conectar neon.vibes astro.wav
-Conectar astro.wav pixelghost_7
-Conectar pixelghost_7 neon.vibes
-Conectar midnight.exe lunar.archive
-Conectar lunar.archive glitchmode_99
+Conectar pixelghost_7 astro.wav
+Conectar midnight.exe astro.wav
+Conectar lunar.archive astro.wav
+Conectar glitchmode_99 astro.wav
+Conectar astro.wav neon.vibes
 Conectar coffeeandchaos void.jpeg
-Conectar void.jpeg starlost_404
-Conectar retroflux coffeeandchaos
-Grupos
+Conectar void.jpeg coffeeandchaos
+Conectar starlost_404 retroflux
 Contar astro.wav
+Contar neon.vibes
+Contar void.jpeg
+Contar retroflux
+Contar glitchmode_99
+Grupos
 Sugerir astro.wav
-Eliminar lunar.archive
+Desconectar astro.wav
+Contar astro.wav
 Grupos
-Conectar cloud.exe nocturnal.jpg
+Eliminar coffeeandchaos
+Contar void.jpeg
 Grupos
-=======
-Registrar poncho__per
-Registrar Juan_l_2006
-Registrar cam_2201
-Registrar x_David_07
-Conectar poncho__per x_David_07
-Conectar x_David_07 poncho__per 
-Conectar Juan_l_2006 poncho__per 
-Conectar x_David_07 cam_2201
-Conectar poncho__per Juan_l_2006
-Remover x_David_07
-Eliminar Juan_l_2006
-Sugerir poncho__per
-Contar x_David_07
-Contar Juan_l_2006
-Contar poncho__per
->>>>>>> d041902f2f06de7a4fbe91a2c544eeb2cbef6c5e

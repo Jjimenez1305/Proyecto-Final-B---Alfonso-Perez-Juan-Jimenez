@@ -53,8 +53,8 @@ def grupos_independientes(grafo: dict):
 
 def contar_seguidores(uc: str, grafo: dict):
     seguidores = 0
-    for usuario in grafo[uc]:
-        if uc in grafo[usuario]:
+    for usuario in grafo:
+        if uc in grafo[usuario] :
             seguidores += 1
 
     return f"{uc} tiene {seguidores} seguidores"
