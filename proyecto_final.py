@@ -8,7 +8,7 @@ def conectar_usuarios(u1: str, u2: str, grafo):
     grafo[u1].add(u2)
     return grafo
 
-def remover_usuario(u_rem:str,grafo:dict):
+def desconectar_usuario(u_rem:str,grafo:dict):
     for usuario in grafo:
         grafo[usuario].discard(u_rem)
     return grafo
@@ -77,21 +77,20 @@ def main():
             if usuario_1 in nodos and usuario_2 in nodos:
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
-        elif instruccion[0] == 'Remover':
-            usuario_remover = instruccion[1]
-            grafo = remover_usuario(usuario_remover,grafo)
+        elif instruccion[0] == 'Desconectar':
+            usuario_desconectar = instruccion[1]
+            grafo = desconectar_usuario(usuario_desconectar,grafo)
             print(f'R{grafo}')
         elif instruccion[0] == "Eliminar":
             usuario_sg = instruccion[1]
-<<<<<<< HEAD
 
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
                 nodos.remove(usuario_sg)
-=======
+
             grafo = eliminar_usuarios(usuario, grafo)
             print(f'E{grafo}')
->>>>>>> d041902f2f06de7a4fbe91a2c544eeb2cbef6c5e
+
         elif instruccion[0] == "Sugerir":
             usuario_sg = instruccion[1]
             sugeridos = sugerir_personas(usuario_sg, grafo)
