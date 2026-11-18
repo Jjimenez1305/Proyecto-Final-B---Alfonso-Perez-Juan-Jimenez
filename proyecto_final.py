@@ -1,5 +1,11 @@
 from sys import stdin
 
+def verificar_usuario(grafo:dict,usuario:str):
+    if usuario not in grafo:
+        return True
+    else:
+        return False
+
 def registrar_usuario(grafo: dict, usuario: str):
     grafo[usuario] = set()
     return grafo
@@ -68,39 +74,46 @@ def main():
     while instruccion != []:
         if instruccion[0] == "Registrar":
             usuario = instruccion[1]
-            if usuario not in grafo:
-                    grafo = registrar_usuario(grafo, usuario)
+            verificacion = verificar_usuario(grafo,usuario)
+            if verificacion:
+                grafo = registrar_usuario(grafo, usuario)
                     
         elif instruccion[0] == "Conectar":
             usuario_1 = instruccion[1]
             usuario_2 = instruccion[2]
-            if usuario_1 in grafo and usuario_2 in grafo:
+            verificacion_u1 = verificar_usuario(grafo,usuario_1)
+            verificacion_u2 = verificar_usuario(grafo,usuario_2)
+            if not verificacion_u1 and not verificacion_u2:
                 if usuario_2 not in grafo[usuario_1]:
                     grafo = conectar_usuarios(usuario_1, usuario_2, grafo)
                     
         elif instruccion[0] == 'Desconectar':
             usuario_desconectar = instruccion[1]
-            grafo = desconectar_usuario(usuario_desconectar,grafo)
-            print(f'R{grafo}')
+            verificacion = verificar_usuario(grafo,usuario_desconectar)
+            if not verificacion:
+                grafo = desconectar_usuario(usuario_desconectar,grafo)
             
         elif instruccion[0] == "Eliminar":
             usuario_sg = instruccion[1]
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
-            print(f'E{grafo}')
 
         elif instruccion[0] == "Sugerir":
             usuario_sg = instruccion[1]
-            sugeridos = sugerir_personas(usuario_sg, grafo)
-            for usuario_sug in sugeridos:
-                print(f"Sugerencias para {usuario_sg} : {usuario_sug}")
+            verificacion_sg = verificar_usuario(grafo,usuario_sg)
+            if not verificacion_sg:
+                sugeridos = sugerir_personas(usuario_sg, grafo)
+                for usuario_usg in sugeridos:
+                    print(f"Sugerencias para {usuario_sg} : {usuario_usg}")
                 
         elif instruccion[0] == "Grupos":
             print(grupos_independientes(grafo))
             
         elif instruccion[0] == "Contar":
             usuario_cont = instruccion[1]
-            print(contar_seguidores(usuario_cont, grafo))
+            verificacion_ucont = verificar_usuario(grafo,usuario_cont)
+            if not verificacion_ucont:
+                print(contar_seguidores(usuario_cont, grafo))
             
         else:
             print("Instrucción invalida")
