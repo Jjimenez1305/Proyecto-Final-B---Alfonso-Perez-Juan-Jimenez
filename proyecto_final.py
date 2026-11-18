@@ -15,13 +15,16 @@ def conectar_usuarios(u1: str, u2: str, grafo):
     return grafo
 
 def desconectar_usuario(u_rem:str, grafo:dict):
-    for usuario in grafo:
-        grafo[usuario].discard(u_rem)
+    if u_rem in grafo: 
+        for usuario in grafo:
+            if u_rem in grafo[usuario]:
+                grafo[usuario].remove(u_rem)
     return grafo
 
 def eliminar_usuarios(u: str, grafo: dict):
-    desconectar_usuario(u,grafo)
-    grafo.pop(u)
+    if u in grafo:
+        desconectar_usuario(u,grafo)
+        grafo.pop(u)
     return grafo
 
 def sugerir_personas(u_sg:str, grafo: dict):
@@ -92,11 +95,15 @@ def main():
             verificacion = verificar_usuario(grafo,usuario_desconectar)
             if not verificacion:
                 grafo = desconectar_usuario(usuario_desconectar,grafo)
+            else:
+                print(f'No se puede desconectar el usuario {usuario_desconectar} porque no existe en la red.')
             
         elif instruccion[0] == "Eliminar":
-            usuario_sg = instruccion[1]
+            usuario_eliminar = instruccion[1]
             if usuario_sg in grafo:
                 grafo = eliminar_usuarios(usuario_sg, grafo)
+            else:
+                print(f'No se puede eliminar el usuario {usuario_eliminar} porque no existe en la red.')
 
         elif instruccion[0] == "Sugerir":
             usuario_sg = instruccion[1]
@@ -104,8 +111,10 @@ def main():
             if not verificacion_sg:
                 sugeridos = sugerir_personas(usuario_sg, grafo)
                 for usuario_usg in sugeridos:
-                    print(f"Sugerencias para {usuario_sg} : {usuario_usg}")
-                
+                    if sugeridos != []:
+                        print(f"Sugerencias para {usuario_sg} : {usuario_usg}")
+                    else:
+                        print(f"No hay sugerencias para {usuario_sg}")
         elif instruccion[0] == "Grupos":
             print(grupos_independientes(grafo))
             
