@@ -28,11 +28,16 @@ def eliminar_usuarios(u: str, grafo: dict):
     return grafo
 
 def sugerir_personas(u_sg:str, grafo: dict):
+    seguidos = grafo[u_sg]
     recomendados = []
-    for i in grafo:
-        for j in grafo[i]:
-            if j == u_sg:
-                recomendados.append(i)
+    visitados = set()
+
+    for amigo in seguidos:
+        for candidato in grafo[amigo]:
+            if candidato != u_sg and candidato not in seguidos and candidato not in visitados:
+                visitados.add(candidato)
+                recomendados.append(candidato)
+
     return recomendados
 
 def grupos_independientes(grafo: dict):
@@ -100,8 +105,8 @@ def main():
             
         elif instruccion[0] == "Eliminar":
             usuario_eliminar = instruccion[1]
-            if usuario_sg in grafo:
-                grafo = eliminar_usuarios(usuario_sg, grafo)
+            if usuario_eliminar in grafo:
+                grafo = eliminar_usuarios(usuario_eliminar, grafo)
             else:
                 print(f'No se puede eliminar el usuario {usuario_eliminar} porque no existe en la red.')
 
@@ -110,11 +115,11 @@ def main():
             verificacion_sg = verificar_usuario(grafo,usuario_sg)
             if not verificacion_sg:
                 sugeridos = sugerir_personas(usuario_sg, grafo)
-                for usuario_usg in sugeridos:
-                    if sugeridos != []:
+                if sugeridos != []:
+                    for usuario_usg in sugeridos:
                         print(f"Sugerencias para {usuario_sg} : {usuario_usg}")
-                    else:
-                        print(f"No hay sugerencias para {usuario_sg}")
+                else:
+                    print(f"No hay sugerencias para {usuario_sg}")
         elif instruccion[0] == "Grupos":
             print(grupos_independientes(grafo))
             
